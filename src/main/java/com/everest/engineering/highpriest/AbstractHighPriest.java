@@ -14,9 +14,9 @@ public class AbstractHighPriest implements HighPriest{
     private String emperor;
 
     @Override
-    public void luckyDrawMessages() {
-        AbstractBallotSystem abstractBallotSystem = DefaultBallotSystem.getInstance();
-        List<Message> ballot = abstractBallotSystem.getBallot();
+    public void luckyDrawMessages(List<Message> ballot) {
+        //AbstractBallotSystem abstractBallotSystem = DefaultBallotSystem.getInstance();
+        //List<Message> ballot = abstractBallotSystem.getBallot();
         int votesCount = ballot.size();
         List<Message> list = new ArrayList<>();
         for (int i = 0; i < 6 ; i++){

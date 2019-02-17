@@ -18,9 +18,7 @@ public class TestBallotSystem {
         List<String> expected = Arrays.asList("ICE", "LAND");
         AbstractBallotSystem abstractBallotSystem = new AbstractBallotSystemTestDouble();
         abstractBallotSystem.registerCampainingKingdoms(expected);
-
         List<String> actual = abstractBallotSystem.getCampainingKingdoms();
-
         Assertions.assertIterableEquals(expected, actual);
     }
 
