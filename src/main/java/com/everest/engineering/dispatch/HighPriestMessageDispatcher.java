@@ -2,7 +2,7 @@ package com.everest.engineering.dispatch;
 
 import com.everest.engineering.factory.kingdom.KingdomFactory;
 import com.everest.engineering.kingdom.AbstractKingdom;
-import com.everest.engineering.message.Message;
+import com.everest.engineering.message.AbstractMessage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,21 +11,21 @@ import java.util.Map;
 
 public class HighPriestMessageDispatcher implements MessageDispatcher {
     @Override
-    public Map<String, List<String>> dispatch(List<Message> messages) {
+    public Map<String, List<String>> dispatch(List<AbstractMessage> abstractMessages) {
         Map<String, List<String>> map = new HashMap<>();
-        for (Message message : messages){
+        for (AbstractMessage abstractMessage : abstractMessages){
             AbstractKingdom abstractKingdom
-                    = KingdomFactory.getInstance(message.getReceiver().getName());
-            boolean allegiance = abstractKingdom.message(message.getMessage());
+                    = KingdomFactory.getInstance(abstractMessage.getReceiver().getName());
+            boolean allegiance = abstractKingdom.message(abstractMessage.getMessage());
             if (allegiance){
-                if (!map.keySet().contains(message.getSendor().getName())){
+                if (!map.keySet().contains(abstractMessage.getSendor().getName())){
                     List<String> list = new ArrayList<>();
-                    list.add(message.getReceiver().getName());
-                    map.put(message.getSendor().getName(), list);
+                    list.add(abstractMessage.getReceiver().getName());
+                    map.put(abstractMessage.getSendor().getName(), list);
                 }else{
-                    List<String> list = map.get(message.getSendor().getName());
-                    list.add(message.getReceiver().getName());
-                    map.put(message.getSendor().getName(), list);
+                    List<String> list = map.get(abstractMessage.getSendor().getName());
+                    list.add(abstractMessage.getReceiver().getName());
+                    map.put(abstractMessage.getSendor().getName(), list);
                 }
             }
         }

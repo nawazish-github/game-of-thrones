@@ -2,14 +2,15 @@ package com.everest.engineering.ballot;
 
 import com.everest.engineering.factory.kingdom.KingdomFactory;
 import com.everest.engineering.factory.universe.UniverseFactory;
-import com.everest.engineering.message.Message;
+import com.everest.engineering.message.AbstractMessage;
+import com.everest.engineering.message.DefaultMessage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractBallotSystem implements BallotSystem {
     private List<String> campainingKingdoms;
-    private List<Message> ballot = new ArrayList<>();
+    private List<AbstractMessage> ballot = new ArrayList<>();
     private AbstractBallotSystem abstractBallotSystem;
 
     @Override
@@ -23,13 +24,13 @@ public abstract class AbstractBallotSystem implements BallotSystem {
         for(String campaigner : this.campainingKingdoms){
             for (String kingdom : kingdoms){
                 if (!campaigner.equals(kingdom)) //Because campaigne shouldn't send message to its own kingdowm
-                    ballot.add(new Message(KingdomFactory.getInstance(campaigner.toUpperCase()),
+                    ballot.add(new DefaultMessage(KingdomFactory.getInstance(campaigner.toUpperCase()),
                                             KingdomFactory.getInstance(kingdom.toUpperCase())));
             }
         }
     }
 
-    public List<Message> getBallot() {
+    public List<AbstractMessage> getBallot() {
         return ballot;
     }
 

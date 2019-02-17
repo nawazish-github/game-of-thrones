@@ -1,7 +1,5 @@
 package com.everest.engineering.ballot;
 
-import com.everest.engineering.message.Message;
-
 import java.util.List;
 
 public interface BallotSystem {

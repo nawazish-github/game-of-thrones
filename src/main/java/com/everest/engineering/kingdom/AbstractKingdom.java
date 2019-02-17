@@ -8,6 +8,7 @@ public class AbstractKingdom implements Kingdom {
     private final String name;
     private final Emblem emblem;
     private final Map<Character,Integer> kingdomNameMap;
+    private volatile boolean hasVoted = false;
 
     public AbstractKingdom(String name, Emblem emblem) {
         this.name = name;
@@ -16,7 +17,13 @@ public class AbstractKingdom implements Kingdom {
     }
 
     public boolean message(String message) {
-        return verifyMessage(message);
+        boolean voteStatus = verifyMessage(message);
+        if (hasVoted)
+            return false;
+        else{
+            hasVoted = true;
+            return voteStatus;
+        }
     }
 
     public boolean verifyMessage(String message) {

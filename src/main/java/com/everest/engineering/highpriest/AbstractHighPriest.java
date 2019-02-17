@@ -1,35 +1,33 @@
 package com.everest.engineering.highpriest;
 
-import com.everest.engineering.ballot.AbstractBallotSystem;
-import com.everest.engineering.ballot.DefaultBallotSystem;
 import com.everest.engineering.dispatch.HighPriestMessageDispatcher;
 import com.everest.engineering.dispatch.MessageDispatcher;
-import com.everest.engineering.message.Message;
+import com.everest.engineering.message.AbstractMessage;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class AbstractHighPriest implements HighPriest{
-    private List<Message> luckyMessages = new ArrayList<>();
+    private List<AbstractMessage> luckyAbstractMessages = new ArrayList<>();
     private String emperor;
+    private Map<String, List<String>> result;
 
     @Override
-    public void luckyDrawMessages(List<Message> ballot) {
+    public void luckyDrawMessages(List<AbstractMessage> ballot) {
         //AbstractBallotSystem abstractBallotSystem = DefaultBallotSystem.getInstance();
-        //List<Message> ballot = abstractBallotSystem.getBallot();
+        //List<AbstractMessage> ballot = abstractBallotSystem.getBallot();
         int votesCount = ballot.size();
-        List<Message> list = new ArrayList<>();
+        List<AbstractMessage> list = new ArrayList<>();
         for (int i = 0; i < 6 ; i++){
             int rand = (int)Math.random()%votesCount;
             list.add(ballot.get(rand));
         }
-        this.luckyMessages = list;
+        this.luckyAbstractMessages = list;
     }
 
     @Override
-    public void distributeMessagesToOwners(List<Message> messages) {
+    public void distributeMessagesToOwners(List<AbstractMessage> abstractMessages) {
         MessageDispatcher dispatcher = new HighPriestMessageDispatcher();
-        Map<String, List<String>> result =  dispatcher.dispatch(messages);
+        this.result =  dispatcher.dispatch(abstractMessages);
     }
 
     @Override
@@ -39,11 +37,15 @@ public class AbstractHighPriest implements HighPriest{
         return map.lastEntry().getKey();
     }
 
-    public List<Message> getLuckyMessages() {
-        return luckyMessages;
+    public List<AbstractMessage> getLuckyMessages() {
+        return luckyAbstractMessages;
     }
 
     public String getEmperor() {
         return emperor;
+    }
+
+    public Map<String, List<String>> getResult() {
+        return result;
     }
 }

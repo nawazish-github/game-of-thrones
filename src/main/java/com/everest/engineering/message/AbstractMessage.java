@@ -6,23 +6,25 @@ import com.everest.engineering.kingdom.Kingdom;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Message {
+public abstract class AbstractMessage {
     private final AbstractKingdom sendor;
     private final AbstractKingdom receiver;
     private final String message;
     private final static List<String> messageTable = initializeMessageTable();
 
-    public Message(AbstractKingdom sendor, AbstractKingdom receiver) {
+    public AbstractMessage(AbstractKingdom sendor, AbstractKingdom receiver) {
         this.sendor = sendor;
         this.receiver = receiver;
         this.message = getRandomMessage();
     }
 
-    private String getRandomMessage() {
-        //24 implies the total number of msgs in the table. This would allow to choose a message randomly.
+    /*private String getRandomMessage() {
+        //24 implies the total number of standard msgs in the table. This would allow to choose a message randomly.
         int rand = (int)Math.random()%24;
         return messageTable.get(rand);
-    }
+    }*/
+
+    protected abstract String getRandomMessage();
 
     private static List<String> initializeMessageTable(){
         List<String> list = new ArrayList<>();

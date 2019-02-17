@@ -25,7 +25,7 @@ public class GameOfEmpire {
                 break;
             inputs.add(input);
         }
-        InputParser lineInputParser = new LineInputParser(); //ToDo: Might need an interface
+        InputParser lineInputParser = new LineInputParser();
         Map<String, Object> inputMap = lineInputParser.parse(inputs);
         DefaultMessageDispatcher defaultMessageDispatcher = new DefaultMessageDispatcher();
         List<String> allegianceList
