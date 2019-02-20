@@ -18,31 +18,40 @@ public class KingdomFactory {
             switch(kingdomName){
                 case "SPACE":
                     if (spaceKingdom == null)
-                        return new AbstractKingdom("SPACE", new Emblem("Gorilla"));
+                        spaceKingdom = new AbstractKingdom("SPACE", new Emblem("Gorilla"));
                     return spaceKingdom;
                 case "LAND":
                     if (landKingdom == null)
-                        return new AbstractKingdom("LAND", new Emblem("Panda"));
+                        landKingdom = new AbstractKingdom("LAND", new Emblem("Panda"));
                     return landKingdom;
                 case "WATER":
                     if (waterKingdom == null)
-                        return new AbstractKingdom("WATER", new Emblem("Octopus"));
+                        waterKingdom = new AbstractKingdom("WATER", new Emblem("Octopus"));
                     return waterKingdom;
                 case "ICE":
                     if (iceKingdom == null)
-                        return new AbstractKingdom("ICE", new Emblem("Mammoth"));
+                        iceKingdom = new AbstractKingdom("ICE", new Emblem("Mammoth"));
                     return iceKingdom;
                 case "AIR":
                     if (airKingdom == null)
-                        return new AbstractKingdom("AIR", new Emblem("Owl"));
+                         airKingdom = new AbstractKingdom("AIR", new Emblem("Owl"));
                     return airKingdom;
                 case "FIRE":
                     if (fireKingdom == null)
-                        return new AbstractKingdom("FIRE", new Emblem("Dragon"));
+                        fireKingdom = new AbstractKingdom("FIRE", new Emblem("Dragon"));
                     return fireKingdom;
                 default:
                     throw new IllegalArgumentException("Invalid Kingdom name: "+kingdomName);
             }
         }
+    }
+
+    public static void resetKingdoms(){
+        spaceKingdom = null;
+        landKingdom = null;
+        waterKingdom = null;
+        iceKingdom = null;
+        airKingdom = null;
+        fireKingdom = null;
     }
 }
