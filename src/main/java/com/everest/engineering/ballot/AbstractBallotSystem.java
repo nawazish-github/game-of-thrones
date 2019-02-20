@@ -8,34 +8,22 @@ import com.everest.engineering.message.DefaultMessage;
 import java.util.ArrayList;
 import java.util.List;
 
+//Todo: There should be a DefaultBallotSystem and casteVote as abstract
 public abstract class AbstractBallotSystem implements BallotSystem {
-    private List<String> campainingKingdoms;
-    private List<AbstractMessage> ballot = new ArrayList<>();
+    protected List<String> campainingKingdoms;
+    protected List<AbstractMessage> ballot = new ArrayList<>();
     private AbstractBallotSystem abstractBallotSystem;
 
     @Override
     public void registerCampainingKingdoms(List<String> campainingKingdoms) {
         this.campainingKingdoms = campainingKingdoms;
     }
-
     @Override
-    public void casteVote() throws IllegalArgumentException {
-        List<String> kingdoms = UniverseFactory.getAllKingdoms();
-        for(String campaigner : this.campainingKingdoms){
-            for (String kingdom : kingdoms){
-                if (!campaigner.equals(kingdom)) //Because campaigne shouldn't send message to its own kingdowm
-                    ballot.add(new DefaultMessage(KingdomFactory.getInstance(campaigner.toUpperCase()),
-                                            KingdomFactory.getInstance(kingdom.toUpperCase())));
-            }
-        }
-    }
-
+    public abstract void casteVote() throws IllegalArgumentException;
     public List<AbstractMessage> getBallot() {
         return ballot;
     }
-
     public List<String> getCampainingKingdoms() {
         return campainingKingdoms;
     }
-
 }
