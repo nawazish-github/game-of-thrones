@@ -71,4 +71,9 @@ public abstract class AbstractMessage {
     public static List<String> getMessageTable() {
         return messageTable;
     }
+
+    @Override
+    public String toString(){
+        return this.sendor.getName()+" "+this.receiver.getName()+" "+this.message;
+    }
 }
