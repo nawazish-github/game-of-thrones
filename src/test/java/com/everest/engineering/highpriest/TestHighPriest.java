@@ -16,16 +16,14 @@ import java.util.*;
 
 public class TestHighPriest {//ToDo: Setup a @BeforeEach method
 
-
-    private class AbstractHighPriestTestDouble extends AbstractHighPriest{}
     private AbstractBallotSystem abstractBallotSystem;
     private List<String> campaigningKingdoms = Arrays.asList("ICE", "LAND");
-    private AbstractHighPriestTestDouble highPriestTestDouble;
+    private DefaultHighPriest highPriestTestDouble;
 
     @Test
     public void testluckyDrawMessages(){
         abstractBallotSystem = new AbstractBallotSystemTestDouble();
-        highPriestTestDouble = new AbstractHighPriestTestDouble();
+        highPriestTestDouble = new DefaultHighPriest();
         abstractBallotSystem.registerCampainingKingdoms(campaigningKingdoms);
         abstractBallotSystem.casteVote();
         List<AbstractMessage> ballot = abstractBallotSystem.getBallot();
@@ -37,7 +35,7 @@ public class TestHighPriest {//ToDo: Setup a @BeforeEach method
     @Test
     public void testDistributeMessagesToOwners(){
         abstractBallotSystem = new AbstractBallotSystemTestDouble();
-        highPriestTestDouble = new AbstractHighPriestTestDouble();
+        highPriestTestDouble = new DefaultHighPriest();
         abstractBallotSystem.registerCampainingKingdoms(campaigningKingdoms);
         abstractBallotSystem.casteVote();
         highPriestTestDouble.distributeMessagesToOwners(abstractBallotSystem.getBallot());

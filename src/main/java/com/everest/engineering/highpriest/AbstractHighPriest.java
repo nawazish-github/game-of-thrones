@@ -6,23 +6,12 @@ import com.everest.engineering.message.AbstractMessage;
 
 import java.util.*;
 
-public class AbstractHighPriest implements HighPriest{
-    private List<AbstractMessage> luckyAbstractMessages = new ArrayList<>();
+public abstract class AbstractHighPriest implements HighPriest{
+    protected List<AbstractMessage> luckyAbstractMessages = new ArrayList<>();
     private String emperor;
     private Map<String, List<String>> result;
 
-    @Override
-    public void luckyDrawMessages(List<AbstractMessage> ballot) {
-        //AbstractBallotSystem abstractBallotSystem = DefaultBallotSystem.getInstance();
-        //List<AbstractMessage> ballot = abstractBallotSystem.getBallot();
-        int votesCount = ballot.size();
-        List<AbstractMessage> list = new ArrayList<>();
-        for (int i = 0; i < 6 ; i++){
-            int rand = (int)Math.random()%votesCount;
-            list.add(ballot.get(rand));
-        }
-        this.luckyAbstractMessages = list;
-    }
+    public abstract void luckyDrawMessages(List<AbstractMessage> ballot);
 
     @Override
     public void distributeMessagesToOwners(List<AbstractMessage> abstractMessages) {
