@@ -25,7 +25,7 @@ public class TestAbstractMessageDispatch {
         DefaultMessageDispatcher defaultMessageDispatcher
                              = new DefaultMessageDispatcher();
         List<String> actual
-                = defaultMessageDispatcher.dispatchMessagqesForAllegiance(inputMap);
+                = defaultMessageDispatcher.dispatchMessagesForAllegiance(inputMap);
 
         if (expected.size() != actual.size())
             Assertions.assertFalse(true, "Sizes differ: "
