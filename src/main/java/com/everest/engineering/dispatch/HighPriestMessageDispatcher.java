@@ -4,15 +4,12 @@ import com.everest.engineering.factory.kingdom.KingdomFactory;
 import com.everest.engineering.kingdom.AbstractKingdom;
 import com.everest.engineering.message.AbstractMessage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class HighPriestMessageDispatcher implements MessageDispatcher {
     @Override
     public Map<String, List<String>> dispatch(List<AbstractMessage> abstractMessages) {
-        Map<String, List<String>> map = new HashMap<>();
+        Map<String, List<String>> map = new TreeMap<>();
         for (AbstractMessage abstractMessage : abstractMessages){
             AbstractKingdom abstractKingdom
                     = KingdomFactory.getInstance(abstractMessage.getReceiver().getName());

@@ -13,6 +13,11 @@ import java.util.Scanner;
 
 public class GameOfEmpire {
     public static void main(String[] args) throws ParseException {
+        Game game = new BreakerOfChain();
+        game.play();
+        if(true)
+            return;
+
         System.out.println(StringConstants.GREETING);
         System.out.println(StringConstants.INPUT_GREETING);
 

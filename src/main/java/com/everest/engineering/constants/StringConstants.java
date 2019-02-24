@@ -19,4 +19,6 @@ public class StringConstants {
     public static final String AIR = "AIR";
     public static final String LAND = "LAND";
     public static final String FIRE = "FIRE";
+    public static final String ENTER_COMPETING_KINGDOMS = "Enter the kingdoms competing to be the ruler: ";
+    public static final String ALLY = "Allies for ";
 }
