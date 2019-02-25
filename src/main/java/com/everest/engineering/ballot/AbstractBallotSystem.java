@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-//Todo: There should be a DefaultBallotSystem and casteVote as abstract
 public abstract class AbstractBallotSystem implements BallotSystem {
     protected List<String> campainingKingdoms;
     protected List<AbstractMessage> ballot = new ArrayList<>();
