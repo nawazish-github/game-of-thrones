@@ -7,14 +7,15 @@ import com.everest.engineering.message.DefaultMessage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class TestBallotSystem {
     @Test
     public void testRegisterCampainingKingdoms(){
-        List<String> expected = Arrays.asList("ICE", "LAND");
+        //List<String> expected = Arrays.asList("ICE", "LAND");
+        Set<String> expected = new HashSet<>();
+        expected.add("ICE");
+        expected.add("LAND");
         AbstractBallotSystem abstractBallotSystem = new DefaultBallotSystem();
         abstractBallotSystem.registerCampainingKingdoms(expected);
         List<String> actual = abstractBallotSystem.getCampainingKingdoms();
@@ -24,7 +25,9 @@ public class TestBallotSystem {
     @Test
     public void testCasteVote(){
         List<String> kingdoms = UniverseFactory.getAllKingdoms();
-        List<String> campaigningKingdoms = Arrays.asList("ICE", "LAND");
+        Set<String> campaigningKingdoms = new HashSet<>();
+        campaigningKingdoms.add("ICE");
+        campaigningKingdoms.add("LAND");
         List<AbstractMessage> expectedBallot = new ArrayList<>();
 
         for (String campainingKingdom : campaigningKingdoms){
