@@ -12,7 +12,7 @@ public class AbstractKingdom implements Kingdom {
 
     public AbstractKingdom(String name, Emblem emblem) {
         this.name = name;
-        kingdomNameMap = createCharFreqTable(emblem.getName());//ToDo: Is this required to be done here.
+        this.kingdomNameMap = createCharFreqTable(emblem.getName());
         this.emblem = emblem;
     }
 
