@@ -17,11 +17,12 @@ import java.util.*;
 public class TestHighPriest {//ToDo: Setup a @BeforeEach method
 
     private AbstractBallotSystem abstractBallotSystem;
-    private Set<String> campaigningKingdoms =  new HashSet<>();
+    //private Set<String> campaigningKingdoms =  new HashSet<>();
     private DefaultHighPriest highPriestTestDouble;
 
     @Test
     public void testluckyDrawMessages(){
+        Set<String> campaigningKingdoms =  new HashSet<>();
         campaigningKingdoms.add("ICE");
         campaigningKingdoms.add("LAND");
         abstractBallotSystem = new AbstractBallotSystemTestDouble();
@@ -36,6 +37,7 @@ public class TestHighPriest {//ToDo: Setup a @BeforeEach method
 
     @Test
     public void testDistributeMessagesToOwners(){
+        Set<String> campaigningKingdoms =  new LinkedHashSet<>();
         campaigningKingdoms.add("ICE");
         campaigningKingdoms.add("LAND");
         abstractBallotSystem = new AbstractBallotSystemTestDouble();
@@ -51,7 +53,7 @@ public class TestHighPriest {//ToDo: Setup a @BeforeEach method
                                                 StringConstants.FIRE);
         expected.put(StringConstants.ICE, alliesOfIce);
         expected.put(StringConstants.LAND, Collections.emptyList());
-
+        System.out.println(actual.get(StringConstants.ICE));
         Assertions.assertIterableEquals(expected.get(StringConstants.ICE), actual.get(StringConstants.ICE));
         Assertions.assertIterableEquals(expected.get(StringConstants.LAND),
                 actual.getOrDefault(StringConstants.LAND, Collections.emptyList()));
