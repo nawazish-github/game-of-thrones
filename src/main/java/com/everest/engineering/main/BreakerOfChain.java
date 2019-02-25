@@ -38,7 +38,7 @@ public class BreakerOfChain implements Game {
                 HighPriest defaultHighPriest = new DefaultHighPriest();
                 defaultHighPriest.luckyDrawMessages(((DefaultBallotSystem) ballotSystem).getBallot());
                 defaultHighPriest.distributeMessagesToOwners(((DefaultHighPriest) defaultHighPriest).getLuckyMessages());
-                TreeMap<String, List<String>> result = (TreeMap)((DefaultHighPriest) defaultHighPriest).getResult();//ToDo what about kingdoms who did not got any vote; it has to beprinted with a 0
+                TreeMap<String, List<String>> result = (TreeMap)((DefaultHighPriest) defaultHighPriest).getResult();
                 System.out.println(result);
                 for (Map.Entry<String, List<String>> entry : result.entrySet()){
                     System.out.println(StringConstants.OUTPUT
