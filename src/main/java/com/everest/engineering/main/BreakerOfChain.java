@@ -3,6 +3,7 @@ package com.everest.engineering.main;
 import com.everest.engineering.ballot.BallotSystem;
 import com.everest.engineering.ballot.DefaultBallotSystem;
 import com.everest.engineering.constants.StringConstants;
+import com.everest.engineering.factory.kingdom.KingdomFactory;
 import com.everest.engineering.highpriest.DefaultHighPriest;
 import com.everest.engineering.highpriest.HighPriest;
 
@@ -29,6 +30,7 @@ public class BreakerOfChain implements Game {
             }
             int rndCnt = 1;
             while(true){
+                KingdomFactory.resetKingdoms();
                 System.out.printf("Results after round %d ballot count \n", rndCnt++);
                 BallotSystem ballotSystem = new DefaultBallotSystem();
                 ballotSystem.registerCampainingKingdoms(campaigningKingdoms);
