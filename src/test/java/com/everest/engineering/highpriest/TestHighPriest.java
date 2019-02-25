@@ -11,10 +11,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-public class TestHighPriest {//ToDo: Setup a @BeforeEach method
+public class TestHighPriest {
 
     private AbstractBallotSystem abstractBallotSystem;
-    //private Set<String> campaigningKingdoms =  new HashSet<>();
     private DefaultHighPriest highPriestTestDouble;
 
     @Test
@@ -43,8 +42,6 @@ public class TestHighPriest {//ToDo: Setup a @BeforeEach method
         abstractBallotSystem.casteVote();
         highPriestTestDouble.distributeMessagesToOwners(abstractBallotSystem.getBallot());
         Map<String, List<String>> actual = highPriestTestDouble.getResult();
-
-        List<String> kingdoms = UniverseFactory.getAllKingdoms();
         Map<String, List<String>> expected = new HashMap<>();
         List<String> alliesOfIce = Arrays.asList(StringConstants.SPACE, StringConstants.WATER, StringConstants.AIR,
                                                 StringConstants.FIRE);
