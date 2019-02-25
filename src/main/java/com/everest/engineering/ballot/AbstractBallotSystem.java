@@ -7,6 +7,7 @@ import com.everest.engineering.message.DefaultMessage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 //Todo: There should be a DefaultBallotSystem and casteVote as abstract
@@ -14,13 +15,14 @@ public abstract class AbstractBallotSystem implements BallotSystem {
     protected List<String> campainingKingdoms;
     protected List<AbstractMessage> ballot = new ArrayList<>();
     private AbstractBallotSystem abstractBallotSystem;
-    private List<String> input;
+    private Set<String> input;
 
     @Override
-    public void registerCampainingKingdoms(List<String> campainingKingdoms) {
+    public void registerCampainingKingdoms(Set<String> campainingKingdoms) {
         this.input = campainingKingdoms;
         this.campainingKingdoms = campainingKingdoms.stream()
-                                                    .map(kingdom ->kingdom.toUpperCase())
+                                                    .filter(kingdom -> !kingdom.isEmpty())
+                                                    .map(kingdom -> kingdom.trim().toUpperCase())
                                                     .collect(Collectors.toList());
     }
     @Override
