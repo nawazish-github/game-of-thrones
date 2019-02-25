@@ -57,7 +57,6 @@ public class BreakerOfChain implements Game {
                 if (result.entrySet().size() == 0)
                     break;
             }
-
         }
     }
 
@@ -70,10 +69,5 @@ public class BreakerOfChain implements Game {
             }
         }
         return kingdomsTied;
-    }
-
-    class Tie{
-        boolean isTie;
-        Set<String> tiedBetween;
     }
 }
