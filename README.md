@@ -1,4 +1,28 @@
 [![HitCount](http://hits.dwyl.io/nawazish-github/game-of-thrones.svg)](http://hits.dwyl.io/nawazish-github/game-of-thrones)
+#Requirements
+- Maven 3.5.2
+- Java 8 (preferably v161)
+
+#Installation
+- Go to the root directory, namely, game-of-thrones
+- Execute mvn clean to clean the project
+- Execute mvn install to install maven dependencies and run unit tests
+
+#How to play
+- Go to the following directory: $HOME/game-of-empire/target
+- There are two command line flags with respect to the two problems
+    - --agoldencrown
+    - --breakerofchains
+- Execute the following command: java -jar game-or-empire.jar --agoldencrown. This allows to play Problem1 where
+  King Shan sends random messages to other Kingdoms in Southeros and if he gets 3 positive votes he becomes the ruler of
+  Southeros
+- Execute the following command: java -jar game-or-empire.jar --breakerofchains. This allows to play Problem2 where
+  multiple Kingdoms can participate in the voting process to become ruler of Southeros. High priest then, at random, 
+  selects 6 messages and hands over to the recepient Kingdoms, the campaigning Kingdom with maximum positive votes
+  is declared the ruler of Southeros by the High Priest
+- By default, problem 1 would be executed. That is, if no command line flag is provided problem 1 is executed
+- The game expects the user to adhere to the command line input standards as defined in the problem statements
+
 # game-of-thrones
 Game Of Thrones: Help the universe of Southeros elect its next emperor. 
 
