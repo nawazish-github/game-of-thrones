@@ -17,11 +17,13 @@ import java.util.*;
 public class TestHighPriest {//ToDo: Setup a @BeforeEach method
 
     private AbstractBallotSystem abstractBallotSystem;
-    private List<String> campaigningKingdoms = Arrays.asList("ICE", "LAND");
+    private Set<String> campaigningKingdoms =  new HashSet<>();
     private DefaultHighPriest highPriestTestDouble;
 
     @Test
     public void testluckyDrawMessages(){
+        campaigningKingdoms.add("ICE");
+        campaigningKingdoms.add("LAND");
         abstractBallotSystem = new AbstractBallotSystemTestDouble();
         highPriestTestDouble = new DefaultHighPriest();
         abstractBallotSystem.registerCampainingKingdoms(campaigningKingdoms);
@@ -34,6 +36,8 @@ public class TestHighPriest {//ToDo: Setup a @BeforeEach method
 
     @Test
     public void testDistributeMessagesToOwners(){
+        campaigningKingdoms.add("ICE");
+        campaigningKingdoms.add("LAND");
         abstractBallotSystem = new AbstractBallotSystemTestDouble();
         highPriestTestDouble = new DefaultHighPriest();
         abstractBallotSystem.registerCampainingKingdoms(campaigningKingdoms);
