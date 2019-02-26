@@ -5,27 +5,24 @@ import com.everest.engineering.constants.StringConstants;
 import com.everest.engineering.factory.kingdom.KingdomFactory;
 import com.everest.engineering.factory.universe.UniverseFactory;
 import com.everest.engineering.kingdom.AbstractKingdom;
-import com.everest.engineering.kingdom.Emblem;
 import com.everest.engineering.message.AbstractMessage;
-import com.everest.engineering.message.DefaultMessage;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-public class TestHighPriest {//ToDo: Setup a @BeforeEach method
+public class TestHighPriest {
 
-
-    private class AbstractHighPriestTestDouble extends AbstractHighPriest{}
     private AbstractBallotSystem abstractBallotSystem;
-    private List<String> campaigningKingdoms = Arrays.asList("ICE", "LAND");
-    private AbstractHighPriestTestDouble highPriestTestDouble;
+    private DefaultHighPriest highPriestTestDouble;
 
     @Test
     public void testluckyDrawMessages(){
+        Set<String> campaigningKingdoms =  new HashSet<>();
+        campaigningKingdoms.add("ICE");
+        campaigningKingdoms.add("LAND");
         abstractBallotSystem = new AbstractBallotSystemTestDouble();
-        highPriestTestDouble = new AbstractHighPriestTestDouble();
+        highPriestTestDouble = new DefaultHighPriest();
         abstractBallotSystem.registerCampainingKingdoms(campaigningKingdoms);
         abstractBallotSystem.casteVote();
         List<AbstractMessage> ballot = abstractBallotSystem.getBallot();
@@ -36,20 +33,21 @@ public class TestHighPriest {//ToDo: Setup a @BeforeEach method
 
     @Test
     public void testDistributeMessagesToOwners(){
+        Set<String> campaigningKingdoms =  new LinkedHashSet<>();
+        campaigningKingdoms.add("ICE");
+        campaigningKingdoms.add("LAND");
         abstractBallotSystem = new AbstractBallotSystemTestDouble();
-        highPriestTestDouble = new AbstractHighPriestTestDouble();
+        highPriestTestDouble = new DefaultHighPriest();
         abstractBallotSystem.registerCampainingKingdoms(campaigningKingdoms);
         abstractBallotSystem.casteVote();
         highPriestTestDouble.distributeMessagesToOwners(abstractBallotSystem.getBallot());
         Map<String, List<String>> actual = highPriestTestDouble.getResult();
-
-        List<String> kingdoms = UniverseFactory.getAllKingdoms();
         Map<String, List<String>> expected = new HashMap<>();
         List<String> alliesOfIce = Arrays.asList(StringConstants.SPACE, StringConstants.WATER, StringConstants.AIR,
                                                 StringConstants.FIRE);
         expected.put(StringConstants.ICE, alliesOfIce);
         expected.put(StringConstants.LAND, Collections.emptyList());
-
+        System.out.println(actual.get(StringConstants.ICE));
         Assertions.assertIterableEquals(expected.get(StringConstants.ICE), actual.get(StringConstants.ICE));
         Assertions.assertIterableEquals(expected.get(StringConstants.LAND),
                 actual.getOrDefault(StringConstants.LAND, Collections.emptyList()));
